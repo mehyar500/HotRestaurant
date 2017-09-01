@@ -37,9 +37,16 @@ app.get("/reserve", function(res, res) {
 //create new reservation
 app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
-	newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
-	console.log(newReservation);
+	// console.log(newReservation);
+	for (var i = 0, i < 5, i++){
+		reservations.push(newReservation);
+	} else {
+		waitingList.push(newReservation);
+	}
+
+
 	res.json(newReservation);
+
 });
 
 

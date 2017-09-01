@@ -18,21 +18,21 @@ var reservations = [];
 var waitingList = [];
 
 //routes
-app.get("/", function(res, res) {
+app.get("/", function(req, res) {
 	res.sendFile(path.join(__dirname, "index.html"))
 });
 
-app.get("/view", function(res, res) {
-	res.sendFile(path.join(__dirname, "view.html"))
+app.get("/api/tables", function(req, res) {
+	res.sendFile(path.join(__dirname, "tables.html"))
 });
 
-app.get("/reserve", function(res, res) {
+app.get("/api/reserve", function(req, res) {
 	res.sendFile(path.join(__dirname, "reserve.html"))
 });
 
-// app.get("/api", function(res, res) {
-// 	res.json(reservations);
-// });
+app.get("/api/new2", function(res, res) {
+	res.json(reservations);
+});
 
 //create new reservation
 app.post("/api/new", function(req, res) {
@@ -43,11 +43,11 @@ app.post("/api/new", function(req, res) {
 	} else {
 		waitingList.push(newReservation);
 	}
-	console.log(newReservation);
+	console.log("New reservation:\n" + newReservation);
 	console.log("==========");
-	console.log(waitingList);
+	console.log("Waiting List:\n" + waitingList);
 	console.log("==========");
-	console.log(reservations);
+	console.log("Current reservations:\n" + reservations);
 	console.log("==========");
 	res.json(newReservation);
 

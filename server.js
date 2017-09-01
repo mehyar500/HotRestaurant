@@ -38,13 +38,17 @@ app.get("/reserve", function(res, res) {
 app.post("/api/new", function(req, res) {
 	var newReservation = req.body;
 	// console.log(newReservation);
-	for (var i = 0, i < 5, i++){
+	if (reservations.length < 5) {
 		reservations.push(newReservation);
 	} else {
 		waitingList.push(newReservation);
 	}
-
-
+	console.log(newReservation);
+	console.log("==========");
+	console.log(waitingList);
+	console.log("==========");
+	console.log(reservations);
+	console.log("==========");
 	res.json(newReservation);
 
 });
